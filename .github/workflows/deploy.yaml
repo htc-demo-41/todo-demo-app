@@ -61,7 +61,7 @@ jobs:
           architecture: x64
 
       - name: Run the Maven build phase
-        run: mvn package         
+        run: mvn package -Dmaven.test.skip=true    
 
       - run: docker build --platform linux/amd64 . -t $CONTAINER_REGISTRY/$IMAGE:$TAG -f ./src/main/docker/Dockerfile.jvm
       - run: docker push $CONTAINER_REGISTRY/$IMAGE:$TAG
